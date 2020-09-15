@@ -14,14 +14,14 @@ class CustomAdapterFavorites(private var itemList: List<ModelFavorites>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.adapter_favorites, parent, false)
-        return PartViewHolder(view)
+        return FavoritesViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as PartViewHolder).bind(itemList[position])
+        (holder as FavoritesViewHolder).bind(itemList[position])
     }
 
-    class PartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FavoritesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(modelFavorites: ModelFavorites) {
             itemView.title1.text = modelFavorites.title
         }
