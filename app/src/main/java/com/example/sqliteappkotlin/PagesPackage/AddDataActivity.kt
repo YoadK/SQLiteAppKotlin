@@ -26,8 +26,7 @@ class AddDataActivity : AppCompatActivity() {
 
     private fun addData() {
         btnSave.setOnClickListener {
-            val modelFavorites = ModelFavorites(title = titleET.text.toString())
-            dbHandler!!.insertData(modelFavorites = modelFavorites)
+            dbHandler!!.insertData(title = titleET.text.toString())
             startActivity(Intent(this, ListActivity::class.java))
         }
     }

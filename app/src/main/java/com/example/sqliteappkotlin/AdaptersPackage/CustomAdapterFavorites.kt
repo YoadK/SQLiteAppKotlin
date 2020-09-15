@@ -8,7 +8,7 @@ import com.example.sqliteappkotlin.ModelsPackage.ModelFavorites
 import com.example.sqliteappkotlin.R
 import kotlinx.android.synthetic.main.adapter_favorites.view.*
 
-class CustomAdapterFavorites(private var partItemList: List<ModelFavorites>) :
+class CustomAdapterFavorites(private var itemList: List<ModelFavorites>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -18,15 +18,15 @@ class CustomAdapterFavorites(private var partItemList: List<ModelFavorites>) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as PartViewHolder).bind(partItemList[position])
+        (holder as PartViewHolder).bind(itemList[position])
     }
 
     class PartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(part: ModelFavorites) {
-            itemView.title1.text = part.title
+        fun bind(modelFavorites: ModelFavorites) {
+            itemView.title1.text = modelFavorites.title
         }
     }
 
-    override fun getItemCount() = partItemList.size
+    override fun getItemCount() = itemList.size
 
 }

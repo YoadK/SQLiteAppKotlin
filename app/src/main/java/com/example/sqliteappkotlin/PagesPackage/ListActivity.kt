@@ -28,8 +28,8 @@ class ListActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView(dataList: List<ModelFavorites>) {
-        recyclerView.adapter = CustomAdapterFavorites(dataList)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CustomAdapterFavorites(dataList)
     }
 
     private fun buttons() {

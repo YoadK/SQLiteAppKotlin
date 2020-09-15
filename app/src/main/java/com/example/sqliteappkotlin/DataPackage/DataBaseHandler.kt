@@ -12,10 +12,9 @@ val TABLENAME = "Users"
 val COL_TITLE = "title"
 val COL_ID = "id"
 
-class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
-    context, DATABASENAME, null,
-    1
-) {
+class DataBaseHandler(private var context: Context) :
+    SQLiteOpenHelper(context, DATABASENAME, null, 1) {
+
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable =
             "CREATE TABLE $TABLENAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,$COL_TITLE VARCHAR(256))"
@@ -26,10 +25,10 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         onCreate(db);
     }
 
-    fun insertData(modelFavorites: ModelFavorites) {
+    fun insertData(title: String) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(COL_TITLE, modelFavorites.title)
+        contentValues.put(COL_TITLE, title)
         val result = database.insert(TABLENAME, null, contentValues)
         if (result == (0).toLong()) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
